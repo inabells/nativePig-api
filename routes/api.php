@@ -22,6 +22,10 @@ Route::get('getAllSows', "PigController@getAllSows");
 Route::get('getAllBoars', "PigController@getAllBoars");
 Route::get('getAllFemaleGrowers', "PigController@getAllFemaleGrowers");
 Route::get('getAllMaleGrowers', "PigController@getAllMaleGrowers");
+Route::get('getSowCount', "PigController@getSowCount");
+Route::get('getBoarCount', "PigController@getBoarCount");
+Route::get('getFemaleGrowerCount', "PigController@getFemaleGrowerCount");
+Route::get('getMaleGrowerCount', "PigController@getMaleGrowerCount");
 
 Route::get('getFarmInfo/{id}', "FarmController@getFarmInfoByID");
 
@@ -40,3 +44,6 @@ Route::post('addPigMortalitySales', "MortalitySalesController@addPigMortalitySal
 Route::get('getMortality', "MortalitySalesController@getMortality");
 Route::get('getSales', "MortalitySalesController@getSales");
 Route::get('getOthers', "MortalitySalesController@getOthers");
+
+Route::get('getBreedingRecord',"PigBreedingController@getBreedingRecord");
+Route::post('addBreedingRecord',"PigBreedingController@addBreedingRecord");

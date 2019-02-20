@@ -41,6 +41,34 @@ class PigController extends Controller
             ->get();
     }
 
+    public function getSowCount()
+    {
+        return PigModel::where('pig_classification', "Breeder")
+            ->where('pig_sex', "F")
+            ->count();
+    }
+
+    public function getBoarCount()
+    {
+        return PigModel::where('pig_classification', "Breeder")
+            ->where('pig_sex', "M")
+            ->count();
+    }
+
+    public function getFemaleGrowerCount()
+    {
+        return PigModel::where('pig_classification', "Grower")
+            ->where('pig_sex', "F")
+            ->count();
+    }
+
+    public function getMaleGrowerCount()
+    {
+        return PigModel::where('pig_classification', "Grower")
+            ->where('pig_sex', "M")
+            ->count();
+    }
+
     public function addPig(Request $request)
     {
         $pig = new PigModel($request->all());
@@ -51,17 +79,6 @@ class PigController extends Controller
     {
         
     }
-
-    // public function editUser(Request $request)
-    // {
-    //     //kung ano yung issearch mo
-    //     $searchUser = Users::where('last_name', $request->last_name)->first();
-
-    //     $user = Users::find($searchUser->id);
-    //     $user->first_name = $request->first_name;
-    //     $user->age = $request->age;
-    //     $user->save();
-    // }
 
     public function deletePig(Request $request)
     {
