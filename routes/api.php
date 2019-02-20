@@ -35,3 +35,8 @@ Route::post('addPig', "PigController@addPig");
 Route::get('searchPig', "PigController@searchPig");
 
 Route::delete('deletePig', "PigController@deletePig");
+
+Route::post('addPigMortalitySales', "MortalitySalesController@addPigMortalitySales");
+Route::get('getMortality', "MortalitySalesController@getMortality");
+Route::get('getSales', "MortalitySalesController@getSales");
+Route::get('getOthers', "MortalitySalesController@getOthers");

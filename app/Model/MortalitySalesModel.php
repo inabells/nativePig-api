@@ -4,10 +4,10 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PigModel extends Model
+class MortalitySalesModel extends Model
 {
-    protected $table = 'pig_table';
+    protected $table = 'pig_mortality_and_sales';
     protected $primaryKey = 'pig_id';
-    protected $guarded = [];
+   	protected $guarded = [];
     public $timestamps = false;
 }
