@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Model\MortalitySalesModel;
+use App\Model\PigModel;
 
 class MortalitySalesController extends Controller
 {
 
     public function addPigMortalitySales(Request $request)
     {
-        $pig = new MortalitySalesModel($request->all());
-        $pig->save();    
+        $addMortalityRecord = new MortalitySalesModel($request->all());
+        $addMortalityRecord->save();
     }
 
     public function getMortality()

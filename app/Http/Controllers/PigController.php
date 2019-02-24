@@ -41,32 +41,32 @@ class PigController extends Controller
             ->get();
     }
 
-    public function getSowCount()
+    public function getAllCount()
     {
-        return PigModel::where('pig_classification', "Breeder")
-            ->where('pig_sex', "F")
-            ->count();
+        $countArray = array('sowCount' => PigModel::where('pig_classification', "Breeder")
+                    ->where('pig_sex', "F")
+                    ->count(),
+                    
+                    'boarCount' => PigModel::where('pig_classification', "Breeder")
+                    ->where('pig_sex', "M")
+                    ->count(),
+
+                    'femaleGrowerCount' => PigModel::where('pig_classification', "Grower")
+                    ->where('pig_sex', "F")
+                    ->count(),
+
+                    'maleGrowerCount' => PigModel::where('pig_classification', "Grower")
+                    ->where('pig_sex', "M")
+                    ->count()
+        );
+
+        return json_encode($countArray);    
+
     }
 
-    public function getBoarCount()
+    public function getSinglePig(Request $request)
     {
-        return PigModel::where('pig_classification', "Breeder")
-            ->where('pig_sex', "M")
-            ->count();
-    }
-
-    public function getFemaleGrowerCount()
-    {
-        return PigModel::where('pig_classification', "Grower")
-            ->where('pig_sex', "F")
-            ->count();
-    }
-
-    public function getMaleGrowerCount()
-    {
-        return PigModel::where('pig_classification', "Grower")
-            ->where('pig_sex', "M")
-            ->count();
+        return PigModel::where('pig_registration_id', '=', $request->pig_registration_id)->first();
     }
 
     public function addPig(Request $request)
@@ -84,7 +84,10 @@ class PigController extends Controller
     {
         $searchPig = PigModel::where('pig_registration_id', $request->pig_registration_id)->first();
         $pig = PigModel::find($searchPig->pig_id);
+        //$returnPig = $pig;
         $pig->delete();
+
+        //return $returnPig->get("pig_birthdate");
     }
 
     public function searchPig(Request $request)
