@@ -47,6 +47,7 @@ Route::post('addBreedingRecord',"PigBreedingController@addBreedingRecord");
 
 Route::get('getSinglePig', "PigController@getSinglePig");
 Route::get('getAllCount', "PigController@getAllCount");
+Route::post('updateBreederPigProfile', "PigController@updateBreederPigProfile");
 
 
 

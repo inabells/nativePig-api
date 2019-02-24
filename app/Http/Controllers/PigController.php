@@ -75,16 +75,28 @@ class PigController extends Controller
         $pig->save();    
     }
 
-    public function updatePig(Request $request)
+    public function updateBreederPigProfile(Request $request)
     {
-        
+        $searchPig = PigModel::where('pig_registration_id', $request->pig_registration_id)->first();
+        $pig = PigModel::find($searchPig->pig_id);
+        $pig->pig_birthdate = $request->pig_birthdate;
+        $pig->sex_ratio = $request->sex_ratio;
+        $pig->pig_birthweight = $request->pig_birthweight;
+        $pig->pig_weaningweight = $request->pig_weaningweight;
+        $pig->litter_size_born_alive = $request->litter_size_born_alive;
+        $pig->age_first_mating = $request->age_first_mating;
+        $pig->age_at_weaning = $request->age_at_weaning;
+        $pig->pig_mother_earnotch = $request->pig_mother_earnotch;
+        $pig->pig_father_earnotch = $request->pig_father_earnotch;
+        $pig->save();
+
+        return $pig;
     }
 
     public function deletePig(Request $request)
     {
         $searchPig = PigModel::where('pig_registration_id', $request->pig_registration_id)->first();
         $pig = PigModel::find($searchPig->pig_id);
-        //$returnPig = $pig;
         $pig->delete();
 
         //return $returnPig->get("pig_birthdate");
