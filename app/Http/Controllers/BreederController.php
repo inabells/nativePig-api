@@ -30,24 +30,33 @@ class BreederController extends Controller
         return WeightRecordsModel::where('registration_id', $id)->first();
     }
 
-    public function getSinglePigProfile(Request $request)
+    public function getGrossMorphProfile(Request $request)
     {
         return GrossMorphologyModel::where('registration_id', '=', $request->registration_id)->first();
     }
 
-    public function getSinglePigProfileMorph(Request $request)
+    public function getMorphCharProfile(Request $request)
     {
         return MorphometricCharacteristicsModel::where('registration_id', '=', $request->registration_id)->first();
+    }
+
+    public function getWeightProfile(Request $request)
+    {
+        return WeightRecordsModel::where('registration_id', '=', $request->registration_id)->first();
     }
 
     public function addRegId(Request $request)
     {
         $pigGrossMorphology = new GrossMorphologyModel($request->all());
         $pigMorphometricChar = new MorphometricCharacteristicsModel($request->all());
-        $pigWeightRecords = new WeightRecordsModel($request->all());
         $pigGrossMorphology->save();    
-        $pigMorphometricChar->save();    
-        $pigWeightRecords->save();    
+        $pigMorphometricChar->save();            
+    }
+
+    public function addRegIdWeightRecords(Request $request)
+    {
+        $pigWeightRecords = new WeightRecordsModel($request->all());
+        $pigWeightRecords->save();
     }
 
     public function updateGrossMorphology(Request $request)
@@ -86,6 +95,25 @@ class BreederController extends Controller
         $pig->date_collected = $request->date_collected;
         $pig->save();
 
+        return $pig;
+    }
+
+    public function updateWeightRecords(Request $request)
+    {
+        $searchPig = WeightRecordsModel::where('registration_id', $request->registration_id)->first();
+        $pig = WeightRecordsModel::find($searchPig->id);
+        $pig->weight_at_45 = $request->weight_at_45;
+        $pig->weight_at_60 = $request->weight_at_60;
+        $pig->weight_at_90 = $request->weight_at_90;
+        $pig->weight_at_150 = $request->weight_at_150;
+        $pig->weight_at_180 = $request->weight_at_180;
+        $pig->date_collected_at_45 = $request->date_collected_at_45;
+        $pig->date_collected_at_60 = $request->date_collected_at_60;
+        $pig->date_collected_at_90 = $request->date_collected_at_90;
+        $pig->date_collected_at_150 = $request->date_collected_at_150;
+        $pig->date_collected_at_180 = $request->date_collected_at_180;
+        $pig->save();
+        
         return $pig;
     }
 

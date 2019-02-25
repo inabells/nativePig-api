@@ -39,18 +39,21 @@ Route::get('getBreedingRecord',"PigBreedingController@getBreedingRecord");
 Route::get('getFarmInfo/{id}', "FarmController@getFarmInfoByID");
 
 Route::get('getSinglePig', "PigController@getSinglePig");
-Route::get('getSinglePigProfile', "BreederController@getSinglePigProfile");
-Route::get('getSinglePigProfileMorph', "BreederController@getSinglePigProfileMorph");
+Route::get('getGrossMorphProfile', "BreederController@getGrossMorphProfile");
+Route::get('getMorphCharProfile', "BreederController@getMorphCharProfile");
+Route::get('getWeightProfile', "BreederController@getWeightProfile");
 Route::get('getAllCount', "PigController@getAllCount");
 
 Route::post('addPig', "PigController@addPig");
 Route::post('addRegId', "BreederController@addRegId");
+Route::post('addRegIdWeightRecords', "BreederController@addRegIdWeightRecords");
 Route::post('addBreedingRecord',"PigBreedingController@addBreedingRecord");
 Route::post('addPigMortalitySales', "MortalitySalesController@addPigMortalitySales");
 
 Route::post('updateBreederPigProfile', "PigController@updateBreederPigProfile");
 Route::post('updateGrossMorphology', "BreederController@updateGrossMorphology");
 Route::post('updateMorphChar', "BreederController@updateMorphChar");
+Route::post('updateWeightRecords', "BreederController@updateWeightRecords");
 
 Route::delete('deletePig', "PigController@deletePig");
 
