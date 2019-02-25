@@ -44,6 +44,8 @@ Route::get('getMorphCharProfile', "BreederController@getMorphCharProfile");
 Route::get('getWeightProfile', "BreederController@getWeightProfile");
 Route::get('getAllCount', "PigController@getAllCount");
 
+Route::get('getBreedingProfile', "PigBreedingController@getBreedingProfile");
+
 Route::post('addPig', "PigController@addPig");
 Route::post('addRegId', "BreederController@addRegId");
 Route::post('addRegIdWeightRecords', "BreederController@addRegIdWeightRecords");
@@ -54,6 +56,10 @@ Route::post('updateBreederPigProfile', "PigController@updateBreederPigProfile");
 Route::post('updateGrossMorphology', "BreederController@updateGrossMorphology");
 Route::post('updateMorphChar', "BreederController@updateMorphChar");
 Route::post('updateWeightRecords', "BreederController@updateWeightRecords");
+
+Route::post('updateExpectedDateFarrow', "PigBreedingController@updateExpectedDateFarrow");
+Route::post('updateDateBred', "PigBreedingController@updateDateBred");
+Route::post('updateSowStatus', "PigBreedingController@updateSowStatus");
 
 Route::delete('deletePig', "PigController@deletePig");
 

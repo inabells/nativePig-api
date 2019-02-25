@@ -18,6 +18,45 @@ class PigBreedingController extends Controller
         $pig->save();    
     }
 
+    public function getBreedingProfile(Request $request)
+    {
+        return PigBreedingModel::where('sow_registration_id', '=', $request->sow_registration_id)
+        ->where('boar_registration_id', '=', $request->boar_registration_id)->first();
+    }
+
+    public function updateExpectedDateFarrow(Request $request)
+    {
+        $searchPig = PigBreedingModel::where('sow_registration_id', '=', $request->sow_registration_id)
+        ->where('boar_registration_id', '=', $request->boar_registration_id)->first();
+        $pig = PigBreedingModel::find($searchPig->id);
+        $pig->expected_date_farrow = $request->expected_date_farrow;
+        $pig->save();
+
+        return $pig;
+    }
+
+    public function updateDateBred(Request $request)
+    {
+        $searchPig = PigBreedingModel::where('sow_registration_id', '=', $request->sow_registration_id)
+        ->where('boar_registration_id', '=', $request->boar_registration_id)->first();
+        $pig = PigBreedingModel::find($searchPig->id);
+        $pig->date_bred = $request->date_bred;
+        $pig->save();
+
+        return $pig;
+    }
+
+    public function updateSowStatus(Request $request)
+    {
+        $searchPig = PigBreedingModel::where('sow_registration_id', '=', $request->sow_registration_id)
+        ->where('boar_registration_id', '=', $request->boar_registration_id)->first();
+        $pig = PigBreedingModel::find($searchPig->id);
+        $pig->sow_status = $request->sow_status;
+        $pig->save();
+
+        return $pig;
+    }
+
     /**
      * Display a listing of the resource.
      *
