@@ -30,15 +30,64 @@ class BreederController extends Controller
         return WeightRecordsModel::where('registration_id', $id)->first();
     }
 
-    // public function editPig(Request $request)
-    // { 
-    //     $searchUser = Users::where('last_name', $request->last_name)->first();
+    public function getSinglePigProfile(Request $request)
+    {
+        return GrossMorphologyModel::where('registration_id', '=', $request->registration_id)->first();
+    }
 
-    //     $user = Users::find($searchUser->id);
-    //     $user->first_name = $request->first_name;
-    //     $user->age = $request->age;
-    //     $user->save();
-    // }
+    public function getSinglePigProfileMorph(Request $request)
+    {
+        return MorphometricCharacteristicsModel::where('registration_id', '=', $request->registration_id)->first();
+    }
+
+    public function addRegId(Request $request)
+    {
+        $pigGrossMorphology = new GrossMorphologyModel($request->all());
+        $pigMorphometricChar = new MorphometricCharacteristicsModel($request->all());
+        $pigWeightRecords = new WeightRecordsModel($request->all());
+        $pigGrossMorphology->save();    
+        $pigMorphometricChar->save();    
+        $pigWeightRecords->save();    
+    }
+
+    public function updateGrossMorphology(Request $request)
+    {
+        $searchPig = GrossMorphologyModel::where('registration_id', $request->registration_id)->first();
+        $pig = GrossMorphologyModel::find($searchPig->id);
+        $pig->date_collected = $request->date_collected;
+        $pig->hair_type = $request->hair_type;
+        $pig->hair_length = $request->hair_length;
+        $pig->coat_color = $request->coat_color;
+        $pig->color_pattern = $request->color_pattern;
+        $pig->head_shape = $request->head_shape;
+        $pig->skin_type = $request->skin_type;
+        $pig->ear_type = $request->ear_type;
+        $pig->tail_type = $request->tail_type;
+        $pig->backline = $request->backline;
+        $pig->other_marks = $request->other_marks;
+        $pig->save();
+
+        return $pig;
+    }
+
+    public function updateMorphChar(Request $request)
+    {
+        $searchPig = MorphometricCharacteristicsModel::where('registration_id', $request->registration_id)->first();
+        $pig = MorphometricCharacteristicsModel::find($searchPig->id);
+        $pig->ear_length = $request->ear_length;
+        $pig->head_length = $request->head_length;
+        $pig->snout_length = $request->snout_length;
+        $pig->body_length = $request->body_length;
+        $pig->heart_girth = $request->heart_girth;
+        $pig->pelvic_width = $request->pelvic_width;
+        $pig->tail_length = $request->tail_length;
+        $pig->height_at_withers = $request->height_at_withers;
+        $pig->normal_teats = $request->normal_teats;
+        $pig->date_collected = $request->date_collected;
+        $pig->save();
+
+        return $pig;
+    }
 
     /**
      * Display a listing of the resource.
