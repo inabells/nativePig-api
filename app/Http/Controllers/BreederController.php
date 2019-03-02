@@ -20,6 +20,11 @@ class BreederController extends Controller
         return MorphometricCharacteristicsModel::get();        
     }
 
+    public function getAllWeightProfile()
+    {
+        return WeightRecordsModel::get();
+    }
+
     public function getBreederProfileByID($id)
     {
         return BreederProfileModel::where('registration_id', $id)->first();

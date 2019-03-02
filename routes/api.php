@@ -29,6 +29,8 @@ Route::get('getMorphometricCharacteristics/{id}', "BreederController@getMorphome
 Route::get('getWeightRecords/{id}', "BreederController@getWeightRecordsByID");
 Route::get('getAllGrossMorphProfile', "BreederController@getAllGrossMorphProfile");
 Route::get('getAllMorphCharProfile', "BreederController@getAllMorphCharProfile");
+Route::get('getAllWeightProfile', "BreederController@getAllWeightProfile");
+
 
 Route::get('searchPig', "PigController@searchPig");
 
