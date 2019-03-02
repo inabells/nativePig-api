@@ -10,6 +10,16 @@ use App\Model\WeightRecordsModel;
 
 class BreederController extends Controller
 {
+    public function getAllGrossMorphProfile()
+    {
+        return GrossMorphologyModel::get();        
+    }
+
+    public function getAllMorphCharProfile()
+    {
+        return MorphometricCharacteristicsModel::get();        
+    }
+
     public function getBreederProfileByID($id)
     {
         return BreederProfileModel::where('registration_id', $id)->first();

@@ -93,6 +93,15 @@ class PigController extends Controller
         return $pig;
     }
 
+    public function addAsBreeder(Request $request)
+    {
+        $searchPig = PigModel::where('pig_registration_id', $request->pig_registration_id)->first();
+        $pig = PigModel::find($searchPig->pig_id);
+        $pig->pig_classification = 'Breeder';
+        $pig->save();
+    }
+
+
     public function deletePig(Request $request)
     {
         $searchPig = PigModel::where('pig_registration_id', $request->pig_registration_id)->first();

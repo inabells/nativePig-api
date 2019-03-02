@@ -27,6 +27,8 @@ Route::get('getBreederProfile/{id}', "BreederController@getBreederProfileByID");
 Route::get('getGrossMorphology/{id}', "BreederController@getGrossMorphologyByID");
 Route::get('getMorphometricCharacteristics/{id}', "BreederController@getMorphometricCharacteristicsByID");
 Route::get('getWeightRecords/{id}', "BreederController@getWeightRecordsByID");
+Route::get('getAllGrossMorphProfile', "BreederController@getAllGrossMorphProfile");
+Route::get('getAllMorphCharProfile', "BreederController@getAllMorphCharProfile");
 
 Route::get('searchPig', "PigController@searchPig");
 
@@ -51,6 +53,7 @@ Route::post('addRegId', "BreederController@addRegId");
 Route::post('addRegIdWeightRecords', "BreederController@addRegIdWeightRecords");
 Route::post('addBreedingRecord',"PigBreedingController@addBreedingRecord");
 Route::post('addPigMortalitySales', "MortalitySalesController@addPigMortalitySales");
+Route::post('addAsBreeder', "PigController@addAsBreeder");
 
 Route::post('updateBreederPigProfile', "PigController@updateBreederPigProfile");
 Route::post('updateGrossMorphology', "BreederController@updateGrossMorphology");
