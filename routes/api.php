@@ -31,12 +31,12 @@ Route::get('getAllGrossMorphProfile', "BreederController@getAllGrossMorphProfile
 Route::get('getAllMorphCharProfile', "BreederController@getAllMorphCharProfile");
 Route::get('getAllWeightProfile', "BreederController@getAllWeightProfile");
 
-
 Route::get('searchPig', "PigController@searchPig");
 
 Route::get('getMortality', "MortalitySalesController@getMortality");
 Route::get('getSales', "MortalitySalesController@getSales");
 Route::get('getOthers', "MortalitySalesController@getOthers");
+Route::get('getAllMortalitySalesProfile', "MortalitySalesController@getAllMortalitySalesProfile");
 
 Route::get('getBreedingRecord',"PigBreedingController@getBreedingRecord");
 

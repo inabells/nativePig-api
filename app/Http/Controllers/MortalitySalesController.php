@@ -8,6 +8,10 @@ use App\Model\PigModel;
 
 class MortalitySalesController extends Controller
 {
+    public function getAllMortalitySalesProfile()
+    {
+        return MortalitySalesModel::get();
+    }
 
     public function addPigMortalitySales(Request $request)
     {
@@ -35,8 +39,6 @@ class MortalitySalesController extends Controller
             ->whereNull('weight_sold')
             ->get();
     }
-
-
 
     /**
      * Display a listing of the resource.
